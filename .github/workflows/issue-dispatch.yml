@@ -1,0 +1,14 @@
+name: Welcome New Org Member
+
+on:
+  repository_dispatch:
+    types: [issue_created]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Issue Info
+        run: |
+          echo "Title: ${{ github.event.client_payload.title }}"
+          echo "Body: ${{ github.event.client_payload.body }}"
